@@ -2,154 +2,107 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 class List
 {
 private:
-	struct Node
-	{
-		Node* previous;
-		T data;
-		Node* next;
-	};
+    struct Node
+    {
+        T data;
+        Node* next;
+    };
 
-	int size;
-
-	Node* head;
-	Node* tail;
+    int size;
+    Node* head;
 
 public:
-	List()
-	{
-		size = 0;
-		head = nullptr;
-		tail = nullptr;
-	}
+    List()
+    {
+        head = nullptr;
+        size = 0;
+    }
 
-	void push_front(T data)
-	{
-		Node* newNode = new Node;
+    void push_back(T data)
+    {
+        Node* newNode = new Node;
+        newNode->data = data;
 
-		newNode->data = data;
-		newNode->next = nullptr;
-		newNode->previous = nullptr;
+        if (head == nullptr)
+        {
+            head = newNode;
+            newNode->next = head;
+        }
+        else
+        {
+            newNode->next = head->next;
 
-		if (head == nullptr)
-		{
-			head = newNode;
-			tail = newNode;
-		}
-		else
-		{
-			head->previous = newNode;
+            head->next = newNode;
 
-			newNode->next = head;
+            head = newNode;
+        }
+        size++;
+    }
 
-			head = newNode;
-		}
-		size++;
-	}
+    void push_front(T data)
+    {
+        Node* newNode = new Node;
+        newNode->data = data;
 
-	void pop_front()
-	{
-		if (head == nullptr)
-		{
-			cout << "Linked List is Empty" << endl;
-			return;
-		}
+        if (head == nullptr)
+        {
+            head = newNode;
+            newNode->next = head;
+        }
+        else
+        {
+            newNode->next = head->next;
 
-		Node* deleteNode = head;
+            head->next = newNode;
+        }
+        size++;
+    }
 
-		head = deleteNode->next;
-		
-		if (head != nullptr)
-		{
-			deleteNode->previous = nullptr;
-		}
-		else
-		{
-			tail = nullptr;
-		}
+    void pop_front()
+    {
+        if (head == nullptr)
+        {
+            cout << "linked list is empty" << endl;
+        }
+        else
+        {
+            Node* deleteNode = head->next;
 
-		//if (head == tail)
-		//{
-		//	head = nullptr;
-		//	tail = nullptr;
-		//}
-		//else
-		//{
-		//	deleteNode->next->privious = nullptr;
+            if (head == deleteNode)
+            {
+                delete head;
+                head = nullptr;
+            }
+            else
+            {
+                head->next = deleteNode->next;
+                delete deleteNode;
+            }
+        }
+        size--;
+    }
 
-			delete deleteNode;
-
-			size--;
-		//}
-	}
-
-	void push_back(T data)
-	{
-		Node* newNode = new Node;
-
-		newNode->data = data;
-		newNode->next = nullptr;
-		newNode->previous = nullptr;
-
-		if (tail == nullptr)
-		{
-			head = newNode;
-			tail = newNode;
-		}
-		else
-		{
-			tail->next = newNode;
-			newNode->previous = tail;
-			tail = newNode;
-		}
-		size++;
-	}
-
-	void pop_back()
-	{
-		if (tail == nullptr)
-		{
-			cout << "Linked List is Empty" << endl;
-			return;
-		}
-
-		Node* deleteNode = tail;
-
-		tail = deleteNode->previous;
-
-		if (tail != nullptr)
-		{
-			tail->next = nullptr;
-		}
-		else
-		{
-			head = nullptr;
-		}
-
-		delete deleteNode;
-
-		size--;
-	}
 };
 
 int main()
 {
-	List<int> list;
+    List<int> list;
 
-	list.push_front(10);
-	list.push_front(5);
+    list.push_back(10);
+    list.push_back(20);
 
-	list.push_back(20);
-	list.push_back(30);
+    list.push_front(5);
+    list.push_front(1);
 
-	list.pop_back();
-	list.pop_back();
-	list.pop_back();
-	list.pop_back();
-	list.pop_back();
+    list.pop_front();
+    list.pop_front();
+    list.pop_front();
+    list.pop_front();
+    list.pop_front();
 
-	return 0;
+    return 0;
 }
