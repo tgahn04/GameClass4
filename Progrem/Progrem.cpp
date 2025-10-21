@@ -2,107 +2,36 @@
 
 using namespace std;
 
-template<typename T>
-class List
+template <typename T>
+class Vector
 {
 private:
-    struct Node
-    {
-        T data;
-        Node* next;
-    };
-
-    int size;
-    Node* head;
+    T* pointer;
+    int count;
+    int capacity;
 
 public:
-    List()
+    Vector()
     {
-        head = nullptr;
-        size = 0;
+        count = 0;
+        capacity = 0;
+        pointer = nullptr;
     }
-
-    void push_back(T data)
+    
+    void resize(int newSize)
     {
-        Node* newNode = new Node;
-        newNode->data = data;
+        T* newPointer = new T[newSize];
 
-        if (head == nullptr)
-        {
-            head = newNode;
-            newNode->next = head;
-        }
-        else
-        {
-            newNode->next = head->next;
 
-            head->next = newNode;
-
-            head = newNode;
-        }
-        size++;
-    }
-
-    void push_front(T data)
-    {
-        Node* newNode = new Node;
-        newNode->data = data;
-
-        if (head == nullptr)
-        {
-            head = newNode;
-            newNode->next = head;
-        }
-        else
-        {
-            newNode->next = head->next;
-
-            head->next = newNode;
-        }
-        size++;
-    }
-
-    void pop_front()
-    {
-        if (head == nullptr)
-        {
-            cout << "linked list is empty" << endl;
-        }
-        else
-        {
-            Node* deleteNode = head->next;
-
-            if (head == deleteNode)
-            {
-                delete head;
-                head = nullptr;
-            }
-            else
-            {
-                head->next = deleteNode->next;
-                delete deleteNode;
-            }
-        }
-        size--;
     }
 
 };
 
 int main()
 {
-    List<int> list;
+    Vector<int> vector;
+    
 
-    list.push_back(10);
-    list.push_back(20);
-
-    list.push_front(5);
-    list.push_front(1);
-
-    list.pop_front();
-    list.pop_front();
-    list.pop_front();
-    list.pop_front();
-    list.pop_front();
 
     return 0;
 }
