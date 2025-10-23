@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{C4B3B4D9-F91A-4108-97B4-56F8719BA062}|Progrem.vcxproj|solutionrelative:Progrem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEA66D5F-AFF8-4C8A-B3E7-01ED98587533}|..\\Class3th (Circle Linked List)\\Class3th (Circle Linked List).vcxproj|C:\\Users\\tgahn\\Desktop\\GameClass4\\Class3th (Circle Linked List)\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{0F158F07-3148-4BD0-B7BD-09538AFF6D3B}|..\\Class5th (Stack)\\Class5th (Stack).vcxproj|C:\\Users\\tgahn\\Desktop\\GameClass4\\Class5th (Stack)\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,21 +17,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Source.cpp",
-              "DocumentMoniker": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Class3th (Circle Linked List)\\Source.cpp",
-              "RelativeDocumentMoniker": "..\\Class3th (Circle Linked List)\\Source.cpp",
-              "ToolTip": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Class3th (Circle Linked List)\\Source.cpp",
-              "RelativeToolTip": "..\\Class3th (Circle Linked List)\\Source.cpp",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAkwJIAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-21T09:45:36.587Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,9 +27,23 @@
               "RelativeDocumentMoniker": "Progrem.cpp",
               "ToolTip": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Progrem\\Progrem.cpp",
               "RelativeToolTip": "Progrem.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-15T09:04:43.944Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Source.cpp",
+              "DocumentMoniker": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Class5th (Stack)\\Source.cpp",
+              "RelativeDocumentMoniker": "..\\Class5th (Stack)\\Source.cpp",
+              "ToolTip": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Class5th (Stack)\\Source.cpp",
+              "RelativeToolTip": "..\\Class5th (Stack)\\Source.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-23T10:01:09.916Z",
               "EditorCaption": ""
             }
           ]
