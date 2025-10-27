@@ -2,94 +2,100 @@
 
 using namespace std;
 
-#define SIZE 4
-
 template <typename T>
-class Queue
+class PriorityQueue
 {
-private:
-    int rear;
-    int front;
+private: 
+    int index;
+    int capacity;
 
-    T container[SIZE];
+    T* container;
 
 public:
-    Queue()
+    PriorityQueue()
     {
-        front = SIZE - 1;
-        rear = SIZE - 1;
+        index = 0;
+        capacity = 0;
+        container = nullptr;
+    }
 
-        for (int i = 0; i < SIZE; i++)
+    void resize(int newSize)
+    {
+        capacity = newSize;
+
+        T* temporary = new T[capacity];
+
+        for (int i = 0; i < capacity; i++)
         {
-            container[i] = NULL;
+            temporary[i] = NULL;
         }
+
+        for (int i = 0; i < index; i++)
+        {
+            temporary[i] = container[i];
+        }
+
+        delete[] container;
+
+        container = temporary;
     }
 
     void push(T data)
     {
-        if (front == (rear + 1) % SIZE)
+        if (capacity <= 0)
         {
-            cout << "Circular_queue_overflow" << endl;
+            resize(1);
         }
-        else
+        else if (index >= capacity)
         {
-            rear = (rear - 1 + SIZE) % SIZE;
-            container[rear] = data;
+            resize(capacity * 2);
+        }
+
+        container[index++] = data;
+        int child = index - 1;
+        int parent = (child - 1) / 2;
+
+        while (child > 0)
+        {
+            if (container[parent] < container[child])
+            {
+                swap(container[parent], container[child]);
+            }
+
+            child = parent;
+            parent = (child - 1) / 2;
         }
     }
 
-    void pop()
+    const T& top()
     {
-        if (empty())
+        if (index == 0)
         {
-            cout << "Circular_queue_is_empty" << endl;
-            exit(1);
-        }
-        else
-        {
-            front = (front + 1) % SIZE;
-
-            container[front] = NULL;
+            
         }
     }
-
+    
     const bool& empty()
     {
-        return (front == rear);
+        return index == 0;
     }
 
-    const T peek()
+    ~PriorityQueue()
     {
-        if (empty())
-        {
-            exit(1);
-        }
-        else
-        {
-            return container[(front + 1) % SIZE];
-        }
+        delete[] container;
     }
 };
 
-
 int main()
 {
-    Queue<int> queue;
+    PriorityQueue<int> priorityQueue;
 
-    queue.push(10);
-    queue.push(20);
-    queue.push(30);
+    priorityQueue.push(10);
+    priorityQueue.push(20);
+    priorityQueue.push(5);
+    priorityQueue.push(33);
 
-    while (queue.empty() == false)
-    {
-        cout << queue.peek() << endl;
 
-        queue.pop();
-    }
-
-    queue.push(40);
-    queue.push(50);
-    queue.push(60);
 
     return 0;
 }
