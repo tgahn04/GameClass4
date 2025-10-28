@@ -5,9 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C4B3B4D9-F91A-4108-97B4-56F8719BA062}|Progrem.vcxproj|C:\\Users\\tgahn\\Desktop\\GameClass4\\Progrem\\Progrem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C4B3B4D9-F91A-4108-97B4-56F8719BA062}|Progrem.vcxproj|solutionrelative:Progrem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{927A9668-8431-4352-AA7B-459D12FD99C7}|..\\Class7th (Circle Queue)\\Class7th (Circle Queue).vcxproj|C:\\Users\\tgahn\\Desktop\\GameClass4\\Class7th (Circle Queue)\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,23 +24,10 @@
               "RelativeDocumentMoniker": "Progrem.cpp",
               "ToolTip": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Progrem\\Progrem.cpp",
               "RelativeToolTip": "Progrem.cpp",
-              "ViewState": "AgIAACcAAAAAAAAAAAAkwFUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAkwCIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-15T09:04:43.944Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Source.cpp",
-              "DocumentMoniker": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Class7th (Circle Queue)\\Source.cpp",
-              "RelativeDocumentMoniker": "..\\Class7th (Circle Queue)\\Source.cpp",
-              "ToolTip": "C:\\Users\\tgahn\\Desktop\\GameClass4\\Class7th (Circle Queue)\\Source.cpp",
-              "RelativeToolTip": "..\\Class7th (Circle Queue)\\Source.cpp",
-              "ViewState": "AgIAACEAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-27T10:38:57.692Z",
               "EditorCaption": ""
             }
           ]
