@@ -67,7 +67,7 @@ public:
         int hashIndex = hash_function(key);
 
         // 새로운 노드를 생성합니다.
-        Node * newNode = new Node;
+        Node* newNode = new Node;
 
         newNode->key = key;
         newNode->value = value;
@@ -112,35 +112,69 @@ public:
         }
         else
         {
+            // 5. currentNode를 이용해서 내가 찾고자 하는 key값을 찾습니다.
             while (currentNode != nullptr)
             {
                 if (currentNode->key == key)
-                    break;
-
-                previousNode = currentNode;
-                currentNode = currentNode->next;
-            }
-
-            if (currentNode != nullptr)
-            {
-                if (previousNode == nullptr)
                 {
-                    bucket[hashIndex].head = currentNode->next;
+                    if (currentNode == bucket[hashIndex].head)
+                    {
+                        bucket[hashIndex].head = currentNode->next;
+                    }
+                    else
+                    {
+                        previousNode->next = currentNode->next;
+                    }
+
+                    size--;
+                    bucket[hashIndex].count--;
+                    delete currentNode;
+
+                    return;
                 }
                 else
                 {
-                    previousNode->next = currentNode->next;
+                    previousNode = currentNode;
+                    currentNode = currentNode->next;
                 }
+            }
+        }
+    }
 
-                delete currentNode;
-                bucket[hashIndex].count--;
-                size--;
+    const float& load_factor()
+    {
+        return (float)size / capacity;
+    }
+
+    const int& bucket_count()
+    {
+        return capacity;
+    }
+
+    ~HashTable()
+    {
+        for (int i = 0; i < capacity; i++)
+        {
+            Node* deleteNode = bucket[i].head;
+            Node* nextNode = bucket[i].head;
+
+            while (bucket[i].head == nullptr)
+            {
+                continue;
             }
             else
             {
-                cout << "not_key_found..." << endl;
-            }
+                while (nextNode != nullptr)
+                {
+                    nextNode = deleteNode->next;
+
+                    delete deleteNode;
+
+                    deleteNode = nextNode;
+                }
+                }
         }
+        delete[] bucket;
     }
 };
 
@@ -160,8 +194,10 @@ int main()
     hashtable.insert("Chain Vast", 800);
 
     hashtable.erase("Abyssal Mask");
-    hashtable.erase("Bami's Cinder");
     hashtable.erase("Frozen Heart");
+
+    cout << "Load_Factor : " << hashtable.load_factor() << endl;
+    cout << "Bucket_Count : " << hashtable.bucket_count() << endl;
 
     return 0;
 }

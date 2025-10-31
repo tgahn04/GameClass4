@@ -1,3 +1,7 @@
 ﻿  Progrem.cpp
-C:\Users\tgahn\Desktop\GameClass4\Progrem\Progrem.cpp(146,1): warning C4172: 지역 변수 또는 임시 의 주소를 반환하는 중
-  Progrem.vcxproj -> C:\Users\tgahn\Desktop\GameClass4\Progrem\x64\Debug\Progrem.exe
+  Source.cpp
+  코드를 생성하고 있습니다...
+C:\Users\tgahn\Desktop\GameClass4\Progrem\Progrem.cpp(30,13): error C2512: 'Graph<int>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+      C:\Users\tgahn\Desktop\GameClass4\Progrem\Progrem.cpp(6,7):
+      'Graph<int>' 선언을 참조하십시오.
+  
