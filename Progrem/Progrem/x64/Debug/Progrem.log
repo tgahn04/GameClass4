@@ -1,7 +1,2 @@
 ﻿  Progrem.cpp
-  Source.cpp
-  코드를 생성하고 있습니다...
-C:\Users\tgahn\Desktop\GameClass4\Progrem\Progrem.cpp(30,13): error C2512: 'Graph<int>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
-      C:\Users\tgahn\Desktop\GameClass4\Progrem\Progrem.cpp(6,7):
-      'Graph<int>' 선언을 참조하십시오.
-  
+  Progrem.vcxproj -> C:\Users\tgahn\Desktop\GameClass4\Progrem\x64\Debug\Progrem.exe
