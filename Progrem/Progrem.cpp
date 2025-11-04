@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 
 using namespace std;
-
+	
 template <typename T>
 class Graph
 {
@@ -59,36 +59,102 @@ public:
 		vertex = container;
 	}
 
-	void edge(int i, int j)
+	void resize()
 	{
-		if (size == 0)
+		int** newMatrix = new int* [size];
+
+		for (int i = 0; i < size; i++)
 		{
-			cout << "adjacency_matrix_is_empty" << endl;
-			return;
+			newMatrix[i] = new int[size] {0};
 		}
 
-		if (i >= size || j >= size || i < 0 || j < 0)
+		for (int i = 0; i < count; i++)
 		{
-			cout << "index_out_of_range" << endl;
-			return;
-		}
-
-		if (!matrix)
-		{
-			matrix = new int* [size];
-
-			for (int x = 0; x < size; x++)
+			for (int j = 0; j < size; j++)
 			{
-				matrix[x] = new int[size];
-
-				for (int y = 0; y < size; y++)
-				{
-					matrix[x][y] = 0;
-				}
+				newMatrix[i][j] = matrix[i][j];
 			}
 		}
-		matrix[i][j] = 1;
-		matrix[j][i] = 1;
+
+		for (int i = 0; i < count; i++)
+		{
+			delete[] matrix[i];
+		}
+
+		delete[] matrix;
+
+		matrix = newMatrix;
+
+		count = size;
+	}
+
+	void edge(int i, int j)
+	{
+		if (size <= 0)
+		{
+			cout << "adjacency_matrix_is_empty" << endl;
+		}
+		if (i >= size || j >= size)
+		{
+			cout << "index_out_of_range" << endl;
+		}
+		else
+		{
+			if (matrix == nullptr)
+			{
+				count = size;
+
+				matrix = new int* [size];
+
+				for (int i = 0; i < size; i++)
+				{
+					matrix[i] = new int[size];
+
+					for (int j = 0; j < size; j++)
+					{
+						matrix[i][j] = 0;
+					}
+				}
+			}
+			else if (size > count)
+			{
+				resize();
+			}
+
+			matrix[i][j] = 1;
+			matrix[j][i] = 1;
+		}
+	}
+
+	friend ostream& operator << (ostream& ostream, const Graph<T>& graph)
+	{
+		ostream << "  ";
+
+		cout << graph << endl;
+	}
+
+	~Graph()
+	{
+		if (vertex != nullptr)
+		{
+			delete[] vertex;
+			vertex = nullptr;
+		}
+
+		if (matrix != nullptr)
+		{
+			for (int i = 0; i < count; i++)
+			{
+				delete[] matrix[i];
+			}
+
+			delete[] matrix;
+			matrix = nullptr;
+		}
+
+		size = 0;
+		count = 0;
+		capacity = 0;
 	}
 
 };
@@ -101,8 +167,14 @@ int main()
 	graph.push('B');
 	graph.push('C');
 
-	graph.edge(0, 2);
+	graph.edge(0, 1);
 	graph.edge(1, 2);
+
+	graph.push('D');
+
+	graph.edge(0, 3);
+
+	
 
 	return 0;
 }
