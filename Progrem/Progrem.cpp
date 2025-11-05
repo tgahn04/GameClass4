@@ -1,17 +1,29 @@
 ﻿#include <iostream>
 
 using namespace std;
-	
+
 template <typename T>
 class Graph
 {
 private:
-	int size;		// 정점의 개수
-	int count;		// 인접 행렬의 크기
-	int capacity;	// 최대 용량
+	struct Node
+	{
+		T data;
+		Node* next;
 
-	T* vertex;		// 정점의 집합
-	int** matrix;	// 인접 행렬
+		Node(T data, Node* link = nullptr)
+		{
+			this->data = data;
+			next = link;
+		}
+	};
+
+	int count;
+	int size;
+	int capacity;
+
+	T* vertex;
+	Node** list;
 
 public:
 	Graph()
@@ -21,7 +33,7 @@ public:
 		capacity = 0;
 
 		vertex = nullptr;
-		matrix = nullptr;
+		list = nullptr;
 	}
 
 	void push(T data)
@@ -41,7 +53,7 @@ public:
 	void resize(int newSize)
 	{
 		capacity = newSize;
-		
+
 		T* container = new T[capacity];
 
 		for (int i = 0; i < capacity; i++)
@@ -59,40 +71,11 @@ public:
 		vertex = container;
 	}
 
-	void resize()
-	{
-		int** newMatrix = new int* [size];
-
-		for (int i = 0; i < size; i++)
-		{
-			newMatrix[i] = new int[size] {0};
-		}
-
-		for (int i = 0; i < count; i++)
-		{
-			for (int j = 0; j < size; j++)
-			{
-				newMatrix[i][j] = matrix[i][j];
-			}
-		}
-
-		for (int i = 0; i < count; i++)
-		{
-			delete[] matrix[i];
-		}
-
-		delete[] matrix;
-
-		matrix = newMatrix;
-
-		count = size;
-	}
-
 	void edge(int i, int j)
 	{
 		if (size <= 0)
 		{
-			cout << "adjacency_matrix_is_empty" << endl;
+			cout << "adjacency_list_is_empty" << endl;
 		}
 		if (i >= size || j >= size)
 		{
@@ -100,81 +83,41 @@ public:
 		}
 		else
 		{
-			if (matrix == nullptr)
+			if (list == nullptr)
 			{
-				count = size;
-
-				matrix = new int* [size];
+				list = new Node * [size];
 
 				for (int i = 0; i < size; i++)
 				{
-					matrix[i] = new int[size];
-
-					for (int j = 0; j < size; j++)
-					{
-						matrix[i][j] = 0;
-					}
+					list[i] = nullptr;
 				}
+				
+				count = size;
 			}
-			else if (size > count)
-			{
-				resize();
-			}
-
-			matrix[i][j] = 1;
-			matrix[j][i] = 1;
-		}
-	}
-
-	friend ostream& operator << (ostream& ostream, const Graph<T>& graph)
-	{
-		ostream << "  ";
-
-		cout << graph << endl;
-	}
-
-	~Graph()
-	{
-		if (vertex != nullptr)
-		{
-			delete[] vertex;
-			vertex = nullptr;
+			list[i] = new Node(vertex[j], list[i]);
+			list[j] = new Node(vertex[i], list[j]);
 		}
 
-		if (matrix != nullptr)
-		{
-			for (int i = 0; i < count; i++)
-			{
-				delete[] matrix[i];
-			}
-
-			delete[] matrix;
-			matrix = nullptr;
-		}
-
-		size = 0;
-		count = 0;
-		capacity = 0;
 	}
-
 };
 
 int main()
 {
-	Graph<int>graph;
+	Graph<char> graph;
 
 	graph.push('A');
 	graph.push('B');
 	graph.push('C');
-
-	graph.edge(0, 1);
-	graph.edge(1, 2);
-
 	graph.push('D');
 
-	graph.edge(0, 3);
+	graph.edge(1,2);
+	graph.edge(1,3);
 
-	
+	graph.push('E');
+
+	graph.edge(2,4);
+
+
 
 	return 0;
 }
